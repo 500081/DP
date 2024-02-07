@@ -1,0 +1,60 @@
+Konzultace 
+konzultace 9. ledna
+
+grafy
+histogramy délky detekce rozdělit podle typu
+histogram vzdálenosti mezi detekcemi  + podle typů (rozšířit sloupce a vytvořit fit)
+počet eventů v jedné minutě x frekvence (taky fitovat)
+detekce na jednotlivých elektrodách v čase (graf v preprintu)
+
+odhad rozdělení pst. 
+histogram vzdálenosti mezi detekcemi 
+exponenciální 
+gamma
+weibull (jednoparametrický)
+počet eventů v jedné minutě (Poisson )
+
+
+18.1.
+problém s mle normálního weibulla a nezáporný odhad jádrové hustoty (log nuly)
+	jsou tam občas i záporné hodnoty - smazat?
+porovnávání rozdělení pomocí AIC a QQ-plotu
+
+Kritéria počtu binu 
+Frekvence eventu za minutu pro jednotlivé elektrody 
+Zkusit spojit pacienta ve stejne fázi 
+Rozdělit i distance pro jednotlivé elektrody a fitovat
+Vymazat nulové nebo záporné distance 
+Zkusit najít jinou než logaritmickou transformaci pro kernel 
+Poslat mailem weibulla a jádrové vyhlazování 
+
+
+Zkusit obě varianty pro konektivitu i s filtrovanim prustrelu
+Thessis od 48 strany 
+Jestli neni přiložený kód k článku 
+Honza má na cross corelavi kód
+
+
+konzultace 1. 2. 
+zkuit odhady i bez průstřelů
+skupiny pro odhad vzdáleností detekcí ne pro jednotlivé channely, ale pro skupiny bundlů, a shaftů 1-3, 4-6,... nebo například shafty z jedné strany elektrody. (Zkusit se zeptat Petra jestli to dává smysl). Potom to porovnat se vztahy, které vyjdou z další analýzy.
+
+
+cross korelace dělat jen kolem eventů, s nějakým oknem okolo, kde budeme hledat signály z jiných elektrod, které budou souviset. (časové okno se musí dát dobře měnit) zkusíme vzdálenost mezi detekcemi 20 milisekund je pro nás významná - budou se řetězit, ale chtělo by to max 100 milisekund - což je délka toho okna 
+další treshold je i maximální zpoždění v cross korelaci 
+zkusit pásmovou propust se spodním tresholdem abychom zvýraznili naše eventy
+
+pro GC můžeme dát menší zpoždění než 20 ms, třeba 10 a bez podvzorkování 
+bylo by dobré to detrendovat, ale bez využití diferencování
+
+dívám se časově na všechny elektrody, najít eventy na jiných elektrodách do 20 milisekund, potom vezmeme kousek kolem obou eventů a s posuvným zpožděním počítáme korelaci, najdeme v jakém zpoždění byla maximální
+je důležité se pak i dívat jaké procento eventů se posouvá na druhou elektrodu a jak vysoké korelace jsou
+
+
+
+
+otázky 
+vymyslet nějaké kritérium, pro spojení více kontaktů? třeba všechny shafty?
+cross korelace jen na některých částech, nebo přes celý signál ?
+pro CC je běžné předzpracování, například pásmová propust - dávalo by smysl zaměřit se pouze na UFO, abychom zkoumali pouze závislost v těchto frekvencích?
+pro GC bude mít extrémně moc parametrů, nedávalo by smysl podvzorkovat signál?
