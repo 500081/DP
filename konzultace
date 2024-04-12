@@ -52,9 +52,36 @@ je důležité se pak i dívat jaké procento eventů se posouvá na druhou elek
 
 
 
-
 otázky 
 vymyslet nějaké kritérium, pro spojení více kontaktů? třeba všechny shafty?
 cross korelace jen na některých částech, nebo přes celý signál ?
 pro CC je běžné předzpracování, například pásmová propust - dávalo by smysl zaměřit se pouze na UFO, abychom zkoumali pouze závislost v těchto frekvencích?
 pro GC bude mít extrémně moc parametrů, nedávalo by smysl podvzorkovat signál?
+
+.
+.
+.
+
+
+konzultace 12. 4.
+
+Optimalizace kodu - nelinearni korelace
+pouzit interpolaci z knihovny numpy
+cyklus pro vypocet chyby jednotlivych y v intervalu napsat jako vektorovou operaci
+cyklus pro jednotliva zpozdeni nebo pro jednotlive dvojice channelu zparalelizovat, ale je potreba rozmyslet kde bude lepši a dat pozor na vnorovani
+
+dalsi 
+treshold korelace nastavit jako fixni hodnotu se kterou můžeme hýbat - bude vice vystupu v zavislosti na hodnote tresholdu
+dělat si grafy pro jednotlive kroky v programu, pripadne i v jinych kodech, ať je jasne co se tam děje
+
+Nelinearni korelace na datech pacientu
+Pro každý event z n-té elektrody
+1) vyhodnotit 0/1 jestli existuje propojeni
+   pro to vektor sousednosti
+2) silu propojeni urcime na zaklade procenta R^2 nad tresholdem/počet peaků nad tr. - to bude vaha propojeni
+3) z kazdeho intervalu R^2 nad tresholdem spocitame prumernou hodnotu, kterou ulozime do druheho vektoru. 
+   Pro kazdou kombinaci elektrod si pak pro dalsi analyzu muzu vykreslit hodnoty zpozdeni a urcit, ktere peaky jsou pro nas relevantni.
+   Potom pro tato zpozdeni spocitame median nebo prumer - doba presunu signalu
+Takto spocitame n-tý řádek matice sousednosti jako průměr přes všechny běhy pro jednotlivé eventy.
+Druhý výstup bude matice zpozdění mezi elektrodami. 
+
